@@ -1,6 +1,6 @@
 ## Riyad's DWM Build
 
-Patches I use are in the patches directory
+Patches I use are in the `/patches` directory
 
 dwm - dynamic window manager
 ============================
