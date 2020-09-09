@@ -3,7 +3,7 @@
 Patches I use are in the `/patches` directory
 
 # dwm - dynamic window manager
-============================
+
 dwm is an extremely fast, small, and dynamic window manager for X.
 
 
