@@ -1,4 +1,3 @@
 *.orig
 *.rej
-*orig
 config.h
