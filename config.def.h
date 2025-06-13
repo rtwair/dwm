@@ -1,5 +1,4 @@
 /* See LICENSE file for copyright and license details. */
-// vanilla with Mod4Mask only -- remove after first patch
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -46,7 +45,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod4Mask
+#define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
