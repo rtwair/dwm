@@ -9,6 +9,7 @@ dwm-stacker-6.2.diff
 dwm-swallow-6.3.diff
 dwm-xrdb-6.4.diff
 dwm-focusfullscreen-20211121-95e7342.diff
+dwm-fixborders-6.2.diff
 */
 
 /* appearance */
@@ -112,6 +113,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 //static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *tfacmd[] = { "authenticator", "dmenu", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -147,6 +149,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_minus,  defaultgaps,    {0} },
 
 
+    // 2fa
+    { MODKEY,                       XK_e,      spawn,          {.v = tfacmd } },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
