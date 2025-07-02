@@ -1,3 +1,12 @@
+dwm - add media key support for brightness and volume
+This patch adds support for:
+- Screen brightness control (F1/F2 keys, keycodes 232/233)  
+- Volume control (F11/F12 keys, keycodes 122/123)
+- Mute toggle (F10 key, keycode 121)
+
+Requires: brightnessctl and pamixer
+
+
 diff --git a/config.def.h b/config.def.h
 index 149f00d..2068d7f 100644
 --- a/config.def.h
