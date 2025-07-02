@@ -10,6 +10,7 @@ dwm-swallow-6.3.diff
 dwm-xrdb-6.4.diff
 dwm-focusfullscreen-20211121-95e7342.diff
 dwm-fixborders-6.2.diff
+dwm-mbp-m1max-mediakeys.diff
 */
 
 /* appearance */
@@ -113,7 +114,19 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 //static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
+//2fa
 static const char *tfacmd[] = { "authenticator", "dmenu", NULL };
+
+//macbookpro display/kb brightness controls/volume
+static const char *brightup[]   = { "brightnessctl", "set", "+5%", NULL };
+static const char *brightdown[] = { "brightnessctl", "set", "5%-", NULL };
+static const char *kbdlightup[]   = { "brightnessctl", "--device=apple::kbd_backlight", "set", "+10%", NULL };
+static const char *kbdlightdown[] = { "brightnessctl", "--device=apple::kbd_backlight", "set", "10%-", NULL };
+static const char *volup[]   = { "pamixer", "--increase", "5", NULL };
+static const char *voldown[] = { "pamixer", "--decrease", "5", NULL };
+static const char *volmute[] = { "pamixer", "--toggle-mute", NULL };
+
+
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -151,6 +164,7 @@ static const Key keys[] = {
 
     // 2fa
     { MODKEY,                       XK_e,      spawn,          {.v = tfacmd } },
+
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
@@ -165,6 +179,16 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
+    //mbp m1max keys
+    { 0,                            XF86XK_LaunchA,   spawn, {.v = kbdlightup } },
+    { 0,                            XF86XK_Search, spawn, {.v = kbdlightdown } },
+
+    { 0,                            XF86XK_MonBrightnessUp,   spawn, {.v = brightup } },
+    { 0,                            XF86XK_MonBrightnessDown, spawn, {.v = brightdown } },
+    { 0,                            XF86XK_AudioRaiseVolume,  spawn, {.v = volup } },
+    { 0,                            XF86XK_AudioLowerVolume,  spawn, {.v = voldown } },
+    { 0,                            XF86XK_AudioMute,         spawn, {.v = volmute } },
+
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
